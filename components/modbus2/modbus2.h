@@ -46,7 +46,7 @@ class Modbus2 : public uart::UARTDevice, public Component {
 
 class Modbus2Device {
  public:
-  void set_parent(Modbus *parent) { parent_ = parent; }
+  void set_parent(Modbus2 *parent) { parent_ = parent; }
   void set_address(uint8_t address) { address_ = address; }
   virtual void on_modbus_data(const std::vector<uint8_t> &data) = 0;
   virtual void on_modbus_error(uint8_t function_code, uint8_t exception_code) {}
@@ -61,7 +61,7 @@ class Modbus2Device {
  protected:
   friend Modbus2;
 
-  Modbus *parent_;
+  Modbus2 *parent_;
   uint8_t address_;
 };
 
